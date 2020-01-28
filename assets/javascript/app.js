@@ -65,14 +65,18 @@ let correctAnswerCount = 0;
 let incorrectAnswerCount = 0;
 let unAnsweredCount = 0;
 
-let number = 10;
+let number = 20;
 let showCountDown;
 
 const htmlUpdatedDisplay = function () {
   clearInterval(showCountDown);
   $("#questions, #startBtn").fadeOut(5, function () {
     $("#allDone").fadeIn();
-    $('#timeDisplay').html("Times Up!");
+    if(number===0){
+      $('#timeDisplay').html("Times Up!");
+    }else{
+      $('#timeDisplay').html("");
+    }
     $('#correctAnswers').text(correctAnswerCount);
     $('#incorrectAnswers').text(incorrectAnswerCount);
     $('#unanswered').text(unAnsweredCount);
@@ -81,7 +85,7 @@ const htmlUpdatedDisplay = function () {
 
 const countdown = function () {
   number--;
-  $('#timeDisplay').text("You have" + number + "remaining!");
+  $('#timeDisplay').text("Time Remaining " + number + " Seconds!");
   if (number === 0) {
     $('#doneBtn').click();
   }
